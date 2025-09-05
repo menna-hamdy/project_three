@@ -69,7 +69,6 @@ function drawcartproducts(products) {
         });
     });
 
-    // ✅ زرار Remove
     document.querySelectorAll(".remove").forEach(btn => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -84,14 +83,12 @@ function drawcartproducts(products) {
     });
 }
 
-// ✅ تحديث البادج
 function updateBadge() {
     let productsincart = JSON.parse(localStorage.getItem("productsincart")) || [];
     badge.innerHTML = productsincart.reduce((acc, item) => acc + (item.quantity || 1), 0);
     badge.style.display = productsincart.length ? "block" : "none";
 }
 
-// ✅ دالة التخزين + إعادة الرسم + تحديث البادج
 function saveAndRedraw() {
     localStorage.setItem("productsincart", JSON.stringify(productsincart));
     drawcartproducts(productsincart);
@@ -123,8 +120,13 @@ function drawloveProducts(products) {
     });
     
     productslove.innerHTML = y.join("");
-    itemslove.style.display = "block";
-    Favorite.style.display = "block";
+    if (productslove){
+        itemslove.style.display = "block";
+        Favorite.style.display = "block";
+    }else{
+         itemslove.style.display = "none";
+        Favorite.style.display = "none";
+    }
 
     document.querySelectorAll(".heart").forEach(heart => {
         heart.addEventListener("click", () => {
@@ -134,10 +136,8 @@ function drawloveProducts(products) {
             let productlove = JSON.parse(localStorage.getItem("productlove")) || [];
             productlove = productlove.filter(p => p.id !== id);
 
-            // تحديث التخزين
             localStorage.setItem("productlove", JSON.stringify(productlove));
 
-            // إعادة رسم القائمة
             drawloveProducts(productlove);
         });
     });
