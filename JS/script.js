@@ -208,8 +208,8 @@ updateDatalist();
 function saveliveproduct(id, heart) {
   if (!localStorage.getItem("firstname")) {
     alert("You must log in first to use wishlist!");
-    cartlove.splice(index, 1);
-    heart.style.color = "black";
+    // cartlove.splice(index, 1);
+    // heart.style.color = "black";
     return;
   }
 
@@ -237,9 +237,9 @@ if (localStorage.getItem("firstname")) {
   function addtocart(id, btn) {
     if (!localStorage.getItem("firstname")) {
     alert("You must log in first to use addation to cart!");
-    btn.textContent = "Add To Cart";
-    btn.style.backgroundColor = "blue";
-    btn.style.border = "blue";
+    // btn.textContent = "Add To Cart";
+    // btn.style.backgroundColor = "blue";
+    // btn.style.border = "blue";
     return;
     }
     let choosenitem = poducts.find((item) => item.id === id);
